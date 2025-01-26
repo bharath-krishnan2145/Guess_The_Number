@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px #fff, 0 0 20px #ff9, 0 0 30px #ff9; }
+            100% { text-shadow: 0 0 20px #f06, 0 0 30px #f06, 0 0 40px #f06; }
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1.2rem;
+            border: 2px solid white;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 20px;
+            background-color: transparent;
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff416c;
+        }
+
+        p, h3 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+        }
+
+        #result {
+            font-weight: bold;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #score {
+            font-size: 1.8rem;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Guess The Number</h1>
+    <input id="guessnumber">
+    <button onclick="check()">CHECK</button>
+    <p id="result">You are Right or Wrong</p>
+    <h3 id="score">Score: 10</h3>
+    <script>
+        var guessnumber=document.getElementById("guessnumber");
+        var result=document.getElementById("result");
+        var randomnumber=Math.floor(Math.random()*10)+1;
+        var score=document.getElementById("score");
+        var totalscore=10;
+        function check(){
+            var enterdnumber=guessnumber.value;
+            if(enterdnumber==randomnumber){
+                console.log("Right")
+                result.textContent="You are Right";
+                alert("YOU WON...")
+            }
+            else{
+                totalscore=totalscore-1;
+                score.textContent="Score: "+totalscore;
+                console.log("Wrong")
+                result.textContent="You are Wrong";
+            }
+        }
+    </script>
+</body>
+</html>
